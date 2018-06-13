@@ -1,0 +1,12 @@
+<h1>新規投稿</h1>
+<%= form_for(@tweet) do |f| %>
+
+	<h3>内容</h3>
+	<%= f.text_area :text %>
+	<h3>投稿タグ</h3>
+	<%#= f.select tag_id, [["FFXIV", "FFXIV"], ["DQX", "DQX"]] %>
+	<h3>free word</h3>
+	<%#= f.text %>
+	<%= f.submit '投稿' %>
+
+<% end %>

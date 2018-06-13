@@ -1,0 +1,12 @@
+now tweet index
+<table>
+	<tbody>
+		<% @tweets.each do |data| %>
+			<tr>
+				<td><%#= attachment_image_tag(data.user, :image, :fill, 30, 30, format:'jpeg', fallback: "noimage.png",size: '30×30', class: "") %></td>
+				<td><%#= lonk_to data.user.name, user %></td>
+				<td><%= link_to data.text, tweet_path(data.id) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 
+  User_id: 
+  Tag_id: 
+  text: MyText
+  free_word: MyText
+
+two:
+  id: 
+  User_id: 
+  Tag_id: 
+  text: MyText
+  free_word: MyText
