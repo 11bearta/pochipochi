@@ -1,12 +1,28 @@
-now tweet index
-<table>
-	<tbody>
-		<% @tweets.each do |data| %>
-			<tr>
-				<td><%#= attachment_image_tag(data.user, :image, :fill, 30, 30, format:'jpeg', fallback: "noimage.png",size: '30×30', class: "") %></td>
-				<td><%#= lonk_to data.user.name, user %></td>
-				<td><%= link_to data.text, tweet_path(data.id) %></td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4">
+			<%= render 'tweets/side', user: current_user %>
+		</div>
+		<div class="col-lg-8">
+			<h2>Tweet</h2>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>icon</th>
+						<th>text</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @tweets.each do |data| %>
+						<tr>
+							<!-- プロフィールアイコン -->
+<!-- 							<td><%#= attachment_image_tag(data.user, :image, :fill, 30, 30, format:'jpeg', fallback: "noimage.png",size: '30x30', class: "icon") %>
+</td> -->
+							<td><%= link_to data.text, tweet_path(data.id) %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

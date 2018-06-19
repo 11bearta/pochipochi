@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
   	if User.find_by(id: params[:id])
 
-  		@user = User.fin(params[:id])
+  		@user = User.find(params[:id])
   		@tweet_new = Tweet.new
   		@tweets_show = @user.tweets
 
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   private
-  # def user_params
-  # 	params.require(:user).permit(:user_name, :introduction, :image)
-  # end
+  def user_params
+  	params.require(:user).permit(:user_name, :introduction, :image)
+  end
 end

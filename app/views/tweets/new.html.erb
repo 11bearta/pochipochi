@@ -1,12 +1,15 @@
-<h1>新規投稿</h1>
-<%= form_for(@tweet) do |f| %>
+<div id="modal-content">
+	<h1>新規投稿</h1>
+	<%= form_for(@tweet) do |f| %>
 
-	<h3>内容</h3>
-	<%= f.text_area :text %>
-	<h3>投稿タグ</h3>
-	<%#= f.select tag_id, [["FFXIV", "FFXIV"], ["DQX", "DQX"]] %>
-	<h3>free word</h3>
-	<%#= f.text %>
-	<%= f.submit '投稿' %>
+		<h3>内容</h3>
+		<%= f.text_area :text %>
+		<h3>投稿タグ</h3>
+		<%#= f.select tag_id, [["FFXIV", "FFXIV"], ["DQX", "DQX"]] %>
+		<h3>free word</h3>
+		<%#= f.text %>
+		<%= f.submit '投稿' %>
 
-<% end %>
+	<% end %>
+	<p><a id="modal-close" class="button-link">閉じる</a></p>
+</div>

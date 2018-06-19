@@ -1,2 +1,26 @@
-<h1>Tweets#show</h1>
-<p>Find me in app/views/tweets/show.html.erb</p>
+<div class="container">
+	<div class="row">
+
+		<div class="col-lg-4">
+			<%= render 'tweets/side', tweet: @tweet, user: @tweet_show.user %>
+			
+		</div>
+
+		<div class="col-lg-8">
+		<h2>Pochi</h2>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>text</th>
+					</tr>
+
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= @tweet_show.text %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

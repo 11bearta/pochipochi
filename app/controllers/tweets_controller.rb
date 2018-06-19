@@ -7,17 +7,16 @@ class TweetsController < ApplicationController
   end
 
   def show
-    @tweet_show = User.find(params[:id])
+    @tweet_show = Tweet.find(params[:id])
     @user = User.find(current_user.id)
     @tweet_new = Tweet.new
   end
 
-  def new
-    @tweet = Tweet.new
-  end
+
 
   def create
     tweet = Tweet.new(tweet_params)
+    tweet.user_id = current_user.id
     tweet.save
     redirect_to tweets_path
   end
@@ -35,6 +34,6 @@ class TweetsController < ApplicationController
   end
   private
   def tweet_params
-    params.require(:tweet).permit(:text, :tag_id, :free_word, :user_id)
+    params.require(:tweet).permit(:text)
   end
 end
