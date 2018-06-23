@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   		@user = User.find(params[:id])
   		@tweet_new = Tweet.new
   		@tweets_show = @user.tweets
+      @tags = Tag.all
 
   	else redirect_to tweets_path
   	end

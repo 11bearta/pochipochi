@@ -1,20 +1,24 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-4">
-			<%= render 'tweets/side', tweet: @tweet, user: @user %>
+			<%= render 'tweets/side', tweet: @tweet, user: @user, tags: @tags %>
 		</div>
 		<div class="col-lg-8">
 			<h2>Pochi</h2>
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>text</th>
+						<th>
+							<p><%= @user.user_name %>さんの投稿一覧</p>
+						</th>
 					</tr>
 				</thead>
 				<tbody>
 					<% @tweets_show.each do |data| %>
 						<tr>
-							<td><%= data.text %></td>
+							<td><%= data.text %><br>
+								<%= attachment_image_tag data, :image, :fill, 100,100, format:'jpeg' %>
+							</td>
 							<% if data.user == current_user %>
 								<td><%= link_to "削除", tweet_path(data), method: :delete,data: { confirm: '削除しますか？' }, class: "btn btn-danger" %></td>
 							<% end %>
@@ -25,4 +29,3 @@
 		</div>
 	</div>
 </div>
-

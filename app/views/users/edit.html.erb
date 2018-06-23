@@ -11,18 +11,21 @@
 <% end %>
 
 
+<div class="devise_window">
+	<h1>User info</h1>
+	<%= form_for(@user) do |f| %>
+	<h4>ユーザーアイコン</h4>
+	<%= f.attachment_field :image %>
+	<h4>ユーザーネーム</h4>
+	<%= f.text_field :user_name , class: "form-group form-control"%>
 
-<h1>User info</h1>
-<%= form_for(@user) do |f| %>
-<h4>user_name</h4>
-<%= f.text_field :user_name , class: "form-group form-control"%>
+	<!-- <h4>image</h4> -->
+	<%#= f.attachment_field :image, class: "form-group form-control"  %>
 
-<!-- <h4>image</h4> -->
-<%#= f.attachment_field :image, class: "form-group form-control"  %>
+	<h4>introduction</h4>
+	<%= f.text_area :introduction, class: "form-group form-control" %>
 
-<h4>introduction</h4>
-<%= f.text_area :introduction, class: "form-group form-control" %>
+	<%= f.submit "Update User", class: "btn btn-default" %>
 
-<%= f.submit "Update User", class: "btn btn-default" %>
-
-<% end %>
+	<% end %>
+</div>

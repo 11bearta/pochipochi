@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 	has_many :tweets
+
 	validates :user_name, length: { in: 1..20 },presence: true
 	validates :introduction, length: { maximum:  100}
 
+	attachment :image
 end

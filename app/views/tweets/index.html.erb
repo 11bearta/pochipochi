@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-4">
-			<%= render 'tweets/side', user: current_user %>
+			<%= render 'tweets/side', user: current_user, tags: @tags %>
 		</div>
 		<div class="col-lg-8">
 			<h2>Tweet</h2>
@@ -16,8 +16,7 @@
 					<% @tweets.each do |data| %>
 						<tr>
 							<!-- プロフィールアイコン -->
-<!-- 							<td><%#= attachment_image_tag(data.user, :image, :fill, 30, 30, format:'jpeg', fallback: "noimage.png",size: '30x30', class: "icon") %>
-</td> -->
+							<td><%= attachment_image_tag(data.user, :image, :fill, 30, 30, format:'jpeg', fallback: "noimage.png",size: '30x30', class: "icon") %></td>
 							<td><%= link_to data.text, tweet_path(data.id) %></td>
 						</tr>
 					<% end %>

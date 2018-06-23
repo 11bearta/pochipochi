@@ -1,23 +1,20 @@
 <div class="container">
 	<div class="row">
-
 		<div class="col-lg-4">
-			<%= render 'tweets/side', tweet: @tweet, user: @tweet_show.user %>
-			
+			<%= render 'tweets/side', user: @tweet_show.user, tags: @tags %>
 		</div>
-
 		<div class="col-lg-8">
 		<h2>Pochi</h2>
 			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>text</th>
-					</tr>
-
-				</thead>
 				<tbody>
 					<tr>
 						<td><%= @tweet_show.text %></td>
+					</tr>
+					<tr>
+						<td><%= attachment_image_tag @tweet_show, :image, :fill, 300,300, format: 'jpeg' %>
+					<tr>
+						<td><%= @tweet_show.tag.tag_name %></td>
+						<td><%= @tweet_show.free_word %></td>
 					</tr>
 				</tbody>
 			</table>

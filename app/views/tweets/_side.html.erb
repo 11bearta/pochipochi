@@ -2,9 +2,7 @@
 
 		<h2>User info</h2>
 			<div class="icon_div">
-
-<%#= attachment_image_tag(user, :image, :fill, 100, 100, format:'jpeg', fallback: "noimage.png",size: '100x100', class: "icon") %>
-
+				<%= attachment_image_tag(user, :image, :fill, 100, 100, format:'jpeg', fallback: "noimage.png",size: '100x100', class: "icon") %>
 			</div>
 		<table class="table">
 			<thead>
@@ -23,7 +21,12 @@
 					<td><%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success" %></td>
 					<% end %>
 				</tr>
-				
 			</tbody>
 		</table>
-		
+		<div class="">
+			<% tags.each do |tag| %>
+			<div class="">
+				<%= link_to tag.tag_name, tag_path(tag.id) %>
+			</div>
+			<% end %>
+		</div>

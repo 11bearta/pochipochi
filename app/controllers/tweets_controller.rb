@@ -3,13 +3,15 @@ class TweetsController < ApplicationController
   end
   def index
     @tweets = Tweet.all
-    @tweet_new = Tweet.new
+    @tags = Tag.all
   end
+
+
 
   def show
     @tweet_show = Tweet.find(params[:id])
     @user = User.find(current_user.id)
-    @tweet_new = Tweet.new
+    @tags = Tag.all
   end
 
 
@@ -34,6 +36,6 @@ class TweetsController < ApplicationController
   end
   private
   def tweet_params
-    params.require(:tweet).permit(:text)
+    params.require(:tweet).permit(:text, :tag_id, :free_word, :image)
   end
 end
