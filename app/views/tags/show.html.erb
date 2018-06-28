@@ -1,40 +1,31 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-4">
+		<div class="col-lg-3">
 			<%= render 'tweets/side', tweet: @tweet, user: @user, tags: @tags %>
 		</div>
-		<div class="col-lg-8">
-			<h2>Pochi</h2>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th><%= @tag.tag_name %></th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @tag.tweets.each do |data| %>
-						<tr>
-							<!-- ユーザーアイコン -->
-							<td>
-								<%= attachment_image_tag data.user, :image, :fill, 30, 30, format:'jpeg', fallback: "noimage.png",size: '30x30', class: "icon" %><br>
-								<%= link_to data.user.user_name,  user_path(data.user.id)  %>
-							</td>
-							<td>
-								<!-- 投稿内容 -->
-								<%= data.text %><br>
-								<!-- 投稿画像 -->
-								<%= attachment_image_tag data, :image, :fill, 100,100, format:'jpeg' %>
-							</td>
-							<!-- 投稿者のみ削除ボタンを表示 -->
-							<% if data.user == current_user %>
-								<td>
-									<%= link_to "削除", tweet_path(data), method: :delete,data: { confirm: '削除しますか？' }, class: "btn btn-danger" %>
-								</td>
-							<% end %>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
+		<div class="col-lg-7">
+		<h2><%= @tag.tag_name %></h2>
+			<% @tag.tweets.reverse_each do |data| %>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<!-- パネルのヘッダー部分 -->
+						<%= attachment_image_tag data.user, :image, :fill, 30, 30, format:'jpeg', fallback: "noimage.png",size: '50x50', class: "icon" %>
+						<%= link_to data.user.user_name,  user_path(data.user.id)  %>
+					</div>
+					<div class="panel-body">
+						<!-- パネルの内容の部分 -->
+						<%= data.text %>
+					</div>
+					<div class="panel-footer">
+						<!-- パネルのフッターの部分 -->
+						<%= attachment_image_tag data, :image, :fill, 500,300, format:'jpeg', class: "picbox" %><br>
+						<p class="font20 postbox">フリーワード:<%= data.free_word %></p>
+						<% if data.user == current_user %>
+								<%= link_to "削除", tweet_path(data), method: :delete,data: { confirm: '削除しますか？' }, class: "btn btn-danger postbox" %>
+						<% end %>
+					</div>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

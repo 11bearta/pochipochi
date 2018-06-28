@@ -1,23 +1,25 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-4">
+		<div class="col-lg-3">
 			<%= render 'tweets/side', user: @tweet_show.user, tags: @tags %>
 		</div>
-		<div class="col-lg-8">
-		<h2>Pochi</h2>
-			<table class="table table-striped">
-				<tbody>
-					<tr>
-						<td><%= @tweet_show.text %></td>
-					</tr>
-					<tr>
-						<td><%= attachment_image_tag @tweet_show, :image, :fill, 300,300, format: 'jpeg' %>
-					<tr>
-						<td><%= @tweet_show.tag.tag_name %></td>
-						<td><%= @tweet_show.free_word %></td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="col-lg-9">
+			<h2><%= @tweet_show.user.user_name %>の投稿詳細</h2>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<!-- パネルの内容の部分 -->
+					<%= @tweet_show.text %><br>
+				</div>
+				<div class="panel-footer">
+					<!-- パネルのフッターの部分 -->
+					<%= attachment_image_tag @tweet_show, :image, :fill, 800,600, format: 'jpeg' %><br>
+					<p class="font20 postbox">タグ:<%= @tweet_show.tag.tag_name %></p>
+					<p class="font20 postbox">フリーワード:<%= @tweet_show.free_word %></p>
+					<% if @tweet_show.user == current_user %>
+					<%= link_to "削除", tweet_path(@tweet_show), method: :delete,data: { confirm: '削除しますか？' }, class: "btn btn-danger postbox" %>
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

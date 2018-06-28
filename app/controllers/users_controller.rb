@@ -7,14 +7,14 @@ class UsersController < ApplicationController
   		@tweets_show = @user.tweets
       @tags = Tag.all
 
-  	else redirect_to tweets_path
+  	else redirect_to user_path(current_user.id)
   	end
   end
 
   def edit
   	@user = User.find(params[:id])
   		if @user != current_user
-  			redirect_to tweets_path
+  			redirect_to user_path(current_user.id)
   		end
   end
 

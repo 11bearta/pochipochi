@@ -1,31 +1,30 @@
 
 
-		<h2>User info</h2>
+		<h2 class="icon_div">ユーザー情報</h2>
 			<div class="icon_div">
 				<%= attachment_image_tag(user, :image, :fill, 100, 100, format:'jpeg', fallback: "noimage.png",size: '100x100', class: "icon") %>
 			</div>
 		<table class="table">
 			<thead>
 				<tr>
-					<th>ユーザーネーム</th>
-					<th><%= user.user_name %></th>
+					<th class="side_font"><%= user.user_name %></th>
 				</tr>
 				<tr>
-					<th>introduction</th>
 					<th><%= user.introduction %></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<% if user.id == current_user.id %>
-					<td><%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success" %></td>
+					<td><%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success side_font" %></td>
 					<% end %>
 				</tr>
 			</tbody>
 		</table>
-		<div class="">
+		<div class="tag_link_box">
+			<h3>タグ一覧</h3>
 			<% tags.each do |tag| %>
-			<div class="">
+			<div class="font20">
 				<%= link_to tag.tag_name, tag_path(tag.id) %>
 			</div>
 			<% end %>
